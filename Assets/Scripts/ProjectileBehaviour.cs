@@ -24,5 +24,34 @@ namespace MyFirstARGame
                 this.transform.GetComponent<Renderer>().material = material;
             }
         }
+
+        void OnCollisionEnter(Collision collision)
+        {
+            // the Collision contains a lot of info,
+            // but it’s the colliding object we’re most
+            // interested in.
+
+            Collider collider = collision.collider;
+
+            if (collider.CompareTag("Perry"))
+            {
+                Perry perry = collider.gameObject.GetComponent<Perry>();
+                Debug.Log("collided with Perry");
+                perry.Die();
+                Destroy(gameObject);
+            }
+            else if (collider.CompareTag("Platypus"))
+            {
+                Platypus plat = collider.gameObject.GetComponent<Platypus>();
+                plat.Die();
+                Destroy(gameObject);
+            }
+            else
+            {
+                // if we collided with something else, print to console 
+                // what the other thing was
+                Debug.Log("Collided with " + collider.tag);
+            }
+        }
     }
 }

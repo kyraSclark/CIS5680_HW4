@@ -8,12 +8,14 @@ namespace MyFirstARGame
     {
         public float timer;
         public float spawnPeriod;
+        private int points;
 
         // Start is called before the first frame update
         void Start()
         {
             timer = 0;
             spawnPeriod = 1.5f;
+            points = -1;
         }
 
         public void SetPosition(Vector3 pos)
@@ -31,6 +33,14 @@ namespace MyFirstARGame
                 timer = 0;
                 Destroy(gameObject);
             }
+        }
+
+        public void Die()
+        {
+            var networkCommunication = FindObjectOfType<NetworkCommunication>();
+            networkCommunication.IncrementScore(points);
+
+            Destroy(gameObject);
         }
     }
 }
