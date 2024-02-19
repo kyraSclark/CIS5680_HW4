@@ -53,6 +53,7 @@ namespace MyFirstARGame
                 int r = Random.Range(1, 3);
                 if (r < 2)
                 {
+<<<<<<< HEAD
 /*                    GameObject perry = 
                         Instantiate(perryObjToSpawn,
                                 new Vector3(originInScreenCoords.x, originInScreenCoords.y, originInScreenCoords.z),
@@ -65,10 +66,15 @@ namespace MyFirstARGame
                                 Vector3(originInScreenCoords.x, originInScreenCoords.y, originInScreenCoords.z)),
                             Quaternion.identity);
 
+=======
+                    GameObject perry = 
+                        Instantiate(perryObjToSpawn);
+>>>>>>> ae46739873669fbd4accd7d90d681752883f1b0e
                     // Choose random grid postion index  
                     perryPos = Random.Range(0, 8);
-                    perry.GetComponent<Perry>().SetPosition(spawnPos[perryPos]);
-                }
+                    //perry.GetComponent<Perry>().SetPosition(spawnPos[perryPos]);
+					perry.GetComponent<Platypus>().SetPosition(spawnPos[perryPos]);
+				}
 
                 for (int i = 0; i < spawnPos.Count; i++)
                 {
@@ -80,6 +86,7 @@ namespace MyFirstARGame
                         if (r < 2)
                         {
                             // Spawn platypus
+<<<<<<< HEAD
 /*                            GameObject platypus = 
                                 Instantiate(platypusObjToSpawn,
                                         Camera.main.ScreenToWorldPoint(new
@@ -93,6 +100,10 @@ namespace MyFirstARGame
                                         Vector3(originInScreenCoords.x, originInScreenCoords.y, originInScreenCoords.z)), 
                                     Quaternion.identity);
 
+=======
+                            GameObject platypus = 
+                                Instantiate(platypusObjToSpawn);
+>>>>>>> ae46739873669fbd4accd7d90d681752883f1b0e
                             // Set platypus position
                             platypus.GetComponent<Platypus>().SetPosition(spawnPos[i]);
                         }
