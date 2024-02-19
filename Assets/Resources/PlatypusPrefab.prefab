@@ -182,6 +182,7 @@ GameObject:
   - component: {fileID: -350640215950471823}
   - component: {fileID: -8444640491156143853}
   - component: {fileID: -7895451235124096079}
+  - component: {fileID: 8115176790550958319}
   m_Layer: 0
   m_Name: PlatypusPrefab
   m_TagString: Platypus
@@ -210,7 +211,7 @@ Transform:
   - {fileID: 580559344931776214}
   - {fileID: 3215825706689687012}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3319753551598490931
 MeshFilter:
@@ -346,6 +347,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &8115176790550958319
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1366325157767004204}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.011262607, y: 0.01970664, z: 0.0063674226}
+  m_Center: {x: -4.656613e-10, y: -0.00020956896, z: -0.00024673826}
 --- !u!1 &1515628036380058922
 GameObject:
   m_ObjectHideFlags: 0
