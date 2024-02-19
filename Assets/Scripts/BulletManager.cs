@@ -45,7 +45,7 @@ namespace MyFirstARGame
 
             foreach (var num in this.bullets)
             {
-                GUILayout.Label($"{num.Key}: {num.Value}", new GUIStyle { normal = new GUIStyleState { textColor = Color.black }, fontSize = 22 });
+                GUILayout.Label($"{num.Key} Bullets: {num.Value}", new GUIStyle { normal = new GUIStyleState { textColor = Color.black }, fontSize = 22 });
             }
 
             GUILayout.FlexibleSpace();

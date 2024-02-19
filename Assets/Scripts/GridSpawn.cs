@@ -4,10 +4,15 @@ using UnityEngine;
 
 namespace MyFirstARGame
 {
+    using Photon.Pun;
+
+
     public class GridSpawn : MonoBehaviour
     {
         public GameObject perryObjToSpawn;
         public GameObject platypusObjToSpawn;
+        public string platypusPrefabName;
+        public string perryPrefabName;
         public float timer;
         public float spawnPeriod;
         public Vector3 originInScreenCoords;
@@ -48,10 +53,18 @@ namespace MyFirstARGame
                 int r = Random.Range(1, 3);
                 if (r < 2)
                 {
-                    GameObject perry = 
+/*                    GameObject perry = 
                         Instantiate(perryObjToSpawn,
                                 new Vector3(originInScreenCoords.x, originInScreenCoords.y, originInScreenCoords.z),
-                                Quaternion.identity);
+                                Quaternion.identity);*/
+
+                    GameObject perry =
+                        PhotonNetwork.Instantiate(
+                            perryPrefabName,
+                            Camera.main.ScreenToWorldPoint(new
+                                Vector3(originInScreenCoords.x, originInScreenCoords.y, originInScreenCoords.z)),
+                            Quaternion.identity);
+
                     // Choose random grid postion index  
                     perryPos = Random.Range(0, 8);
                     perry.GetComponent<Perry>().SetPosition(spawnPos[perryPos]);
@@ -67,11 +80,19 @@ namespace MyFirstARGame
                         if (r < 2)
                         {
                             // Spawn platypus
-                            GameObject platypus = 
+/*                            GameObject platypus = 
                                 Instantiate(platypusObjToSpawn,
                                         Camera.main.ScreenToWorldPoint(new
                                         Vector3(originInScreenCoords.x, originInScreenCoords.y, originInScreenCoords.z)),
-                                        Quaternion.identity);
+                                        Quaternion.identity);*/
+
+                            GameObject platypus = 
+                                PhotonNetwork.Instantiate(
+                                    platypusPrefabName, 
+                                    Camera.main.ScreenToWorldPoint(new
+                                        Vector3(originInScreenCoords.x, originInScreenCoords.y, originInScreenCoords.z)), 
+                                    Quaternion.identity);
+
                             // Set platypus position
                             platypus.GetComponent<Platypus>().SetPosition(spawnPos[i]);
                         }

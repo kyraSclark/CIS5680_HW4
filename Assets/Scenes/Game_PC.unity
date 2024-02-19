@@ -239,6 +239,8 @@ MonoBehaviour:
     type: 3}
   platypusObjToSpawn: {fileID: 5764132574627264512, guid: 7260be19e47909140a38471cab607a51,
     type: 3}
+  platypusPrefabName: PlatypusPrefab
+  perryPrefabName: PerryPrefab
   timer: 0
   spawnPeriod: 0
   originInScreenCoords: {x: 0, y: 0, z: 0}

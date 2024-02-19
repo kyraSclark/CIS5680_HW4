@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreboard: {fileID: 7788529694523478808}
+  bulletManager: {fileID: 0}
 --- !u!114 &4608888377164664123
 MonoBehaviour:
   m_ObjectHideFlags: 0

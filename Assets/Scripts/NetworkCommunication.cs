@@ -74,7 +74,7 @@ namespace MyFirstARGame
             var playerName = $"Player {PhotonNetwork.LocalPlayer.ActorNumber}";
             var currentScore = this.scoreboard.GetScore(playerName);
             this.photonView.RPC("Network_SetPlayerScore", player, playerName, currentScore);
-            //this.photonView.RPC("Network_SetPlayerBullets", player, playerName, 15);
+            this.photonView.RPC("Network_SetPlayerBullets", player, playerName, 15);
         }
 
         // Start is called before the first frame update
