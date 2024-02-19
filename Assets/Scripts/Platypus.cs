@@ -4,7 +4,6 @@ using UnityEngine;
 
 namespace MyFirstARGame
 {
-
     using Photon.Pun;
 
     public class Platypus : MonoBehaviour
@@ -54,8 +53,8 @@ namespace MyFirstARGame
 
         public void Die()
         {
-            var networkCommunication = FindObjectOfType<NetworkCommunication>();
-            networkCommunication.IncrementScore(points);
+/*            var networkCommunication = FindObjectOfType<NetworkCommunication>();
+            networkCommunication.IncrementScore(points);*/
             PhotonNetwork.Destroy(gameObject);
         }
 

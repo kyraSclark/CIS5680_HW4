@@ -66,11 +66,13 @@ namespace MyFirstARGame
         [PunRPC]
         public void Network_SetPlayerBullets(string playerName, int newBullets)
         {
+            Debug.Log("set bullets " + newBullets.ToString());
             this.bulletManager.SetBullets(playerName, newBullets);
         }
 
         public void UpdateForNewPlayer(Photon.Realtime.Player player)
         {
+            Debug.Log("update for new player");
             var playerName = $"Player {PhotonNetwork.LocalPlayer.ActorNumber}";
             var currentScore = this.scoreboard.GetScore(playerName);
             this.photonView.RPC("Network_SetPlayerScore", player, playerName, currentScore);

@@ -24,6 +24,8 @@
             var networkCommunication = FindObjectOfType<NetworkCommunication>();
             networkCommunication.DecrementBullets();
 
+            Debug.Log("on press");
+
             if (networkCommunication.GetBullets() > 0)
             {
                 if (this.projectilePrefab == null || !NetworkLauncher.Singleton.HasJoinedRoom)
@@ -56,6 +58,7 @@
             else
             {
                 // TODO: GAME OVER
+                //Debug.Log("no bullets");
             }
         }
     }

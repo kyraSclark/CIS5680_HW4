@@ -27,6 +27,7 @@ namespace MyFirstARGame
 
         void OnCollisionEnter(Collision collision)
         {
+            Debug.Log("Collided");
             Collider collider = collision.collider;
 
             if (collider.CompareTag("Perry"))
@@ -35,14 +36,19 @@ namespace MyFirstARGame
                 var networkCommunication = FindObjectOfType<NetworkCommunication>();
                 networkCommunication.IncrementBullets();
 
-                Perry perry = collider.gameObject.GetComponent<Perry>();
+                Platypus perry = collider.gameObject.GetComponent<Platypus>();
+                networkCommunication.IncrementScore(perry.points);
                 Debug.Log("collided with Perry");
                 perry.Die();
                 Destroy(gameObject);
             }
             else if (collider.CompareTag("Platypus"))
             {
+                var networkCommunication = FindObjectOfType<NetworkCommunication>();
+
+                Debug.Log("collided with platypus");
                 Platypus plat = collider.gameObject.GetComponent<Platypus>();
+                networkCommunication.IncrementScore(plat.points);
                 plat.Die();
                 Destroy(gameObject);
             }
