@@ -88,7 +88,7 @@ namespace MyFirstARGame
                             GameObject platypus = 
                                 PhotonNetwork.Instantiate(
                                     platypusPrefabName, 
-                                    Vector3.zero, 
+                                    Vector3.zero,
                                     Quaternion.identity);
 
                             // Set platypus position
