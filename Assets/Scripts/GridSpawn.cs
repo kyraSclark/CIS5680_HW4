@@ -49,13 +49,12 @@ namespace MyFirstARGame
                 if (r < 2)
                 {
                     GameObject perry = 
-                        Instantiate(perryObjToSpawn,
-                                new Vector3(originInScreenCoords.x, originInScreenCoords.y, originInScreenCoords.z),
-                                Quaternion.identity);
+                        Instantiate(perryObjToSpawn);
                     // Choose random grid postion index  
                     perryPos = Random.Range(0, 8);
-                    perry.GetComponent<Perry>().SetPosition(spawnPos[perryPos]);
-                }
+                    //perry.GetComponent<Perry>().SetPosition(spawnPos[perryPos]);
+					perry.GetComponent<Platypus>().SetPosition(spawnPos[perryPos]);
+				}
 
                 for (int i = 0; i < spawnPos.Count; i++)
                 {
@@ -68,10 +67,7 @@ namespace MyFirstARGame
                         {
                             // Spawn platypus
                             GameObject platypus = 
-                                Instantiate(platypusObjToSpawn,
-                                        Camera.main.ScreenToWorldPoint(new
-                                        Vector3(originInScreenCoords.x, originInScreenCoords.y, originInScreenCoords.z)),
-                                        Quaternion.identity);
+                                Instantiate(platypusObjToSpawn);
                             // Set platypus position
                             platypus.GetComponent<Platypus>().SetPosition(spawnPos[i]);
                         }
