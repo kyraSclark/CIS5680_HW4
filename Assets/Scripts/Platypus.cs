@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace MyFirstARGame
 {
+
+    using Photon.Pun;
+
     public class Platypus : MonoBehaviour
     {
         public float timer;
@@ -40,15 +43,20 @@ namespace MyFirstARGame
             if (timer > spawnPeriod)
             {
                 timer = 0;
-                Die();
+                Die_noPoints();
             }
+        }
+
+        public void Die_noPoints()
+        {
+			StartCoroutine(ShowAnim(endPos, startPos, true));
         }
 
         public void Die()
         {
             var networkCommunication = FindObjectOfType<NetworkCommunication>();
             networkCommunication.IncrementScore(points);
-			StartCoroutine(ShowAnim(endPos, startPos, true));
+            PhotonNetwork.Destroy(gameObject);
         }
 
         private IEnumerator ShowAnim(Vector3 startPos, Vector3 endPos, bool destroy = false)
@@ -63,7 +71,7 @@ namespace MyFirstARGame
             }
             if (destroy)
             {
-                Destroy(gameObject);
+                PhotonNetwork.Destroy(gameObject);
             }
 		}
     }
