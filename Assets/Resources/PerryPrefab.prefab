@@ -116,7 +116,7 @@ MonoBehaviour:
   timer: 0
   spawnPeriod: 0
   animDuration: 0.3
-  offset: 0.5
+  offset: 0
   points: 5
 --- !u!54 &251900381094787043
 Rigidbody:

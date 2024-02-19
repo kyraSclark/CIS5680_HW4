@@ -27,11 +27,12 @@ namespace MyFirstARGame
         public void SetPosition(Vector3 pos)
         {
 			startPos = gameObject.transform.position + pos;
-            startPos.y -= gameObject.transform.localScale.y + offset;// GetComponent<Renderer>().bounds.size.y + offset;
+            startPos.y -= GetComponent<Renderer>().bounds.size.y/2f + offset;//gameObject.transform.localScale.y + offset;
 			endPos = gameObject.transform.position + pos;
-            endPos.y += gameObject.transform.localScale.y - offset;//GetComponent<Renderer>().bounds.size.y + offset;
-			StartCoroutine(ShowAnim(startPos, endPos));
-            //gameObject.transform.position = pos;
+            endPos.y += GetComponent<Renderer>().bounds.size.y/2f + offset; //gameObject.transform.localScale.y - offset;
+
+			StartCoroutine(ShowAnim(startPos, endPos));            
+			//gameObject.transform.position = pos;
         }
 
         // Update is called once per frame
