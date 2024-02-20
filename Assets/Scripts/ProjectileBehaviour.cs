@@ -27,23 +27,43 @@ namespace MyFirstARGame
 
         void OnCollisionEnter(Collision collision)
         {
+            Debug.Log("Collided");
             Collider collider = collision.collider;
 
             if (collider.CompareTag("Perry"))
             {
-                // Perry gives player 5 bullets
+                // Perry gives player 1 bullet
                 var networkCommunication = FindObjectOfType<NetworkCommunication>();
-                networkCommunication.IncrementBullets();
+                networkCommunication.IncrementBullets(1);
 
-                Perry perry = collider.gameObject.GetComponent<Perry>();
+                Platypus perry = collider.gameObject.GetComponent<Platypus>();
+                networkCommunication.IncrementScore(perry.points);
                 Debug.Log("collided with Perry");
                 perry.Die();
                 Destroy(gameObject);
             }
             else if (collider.CompareTag("Platypus"))
             {
+                var networkCommunication = FindObjectOfType<NetworkCommunication>();
+
+                Debug.Log("collided with platypus");
                 Platypus plat = collider.gameObject.GetComponent<Platypus>();
+                networkCommunication.IncrementScore(plat.points);
                 plat.Die();
+                Destroy(gameObject);
+            }
+            else if (collider.CompareTag("Doof"))
+            {
+                // Perry gives player 10 bullets
+                var networkCommunication = FindObjectOfType<NetworkCommunication>();
+                networkCommunication.IncrementBullets(5);
+
+                // Increase Chance of Perry spawning
+                Doof.Instance.increaseChance();
+
+                Platypus doof = collider.gameObject.GetComponent<Platypus>();
+                Debug.Log("collided with Doof");
+                doof.Die();
                 Destroy(gameObject);
             }
             else

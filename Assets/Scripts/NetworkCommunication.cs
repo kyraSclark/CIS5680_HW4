@@ -35,11 +35,11 @@ namespace MyFirstARGame
             this.photonView.RPC("Network_SetPlayerBullets", RpcTarget.All, playerName, currentBullets - 1);
         }
         
-        public void IncrementBullets()
+        public void IncrementBullets(int b)
         {
             var playerName = $"Player {PhotonNetwork.LocalPlayer.ActorNumber}";
             var currentBullets = this.bulletManager.GetBullets(playerName);
-            this.photonView.RPC("Network_SetPlayerBullets", RpcTarget.All, playerName, currentBullets + 5);
+            this.photonView.RPC("Network_SetPlayerBullets", RpcTarget.All, playerName, currentBullets + b);
         }
 
         public void SetBullets()
@@ -66,12 +66,14 @@ namespace MyFirstARGame
         [PunRPC]
         public void Network_SetPlayerBullets(string playerName, int newBullets)
         {
+            Debug.Log("set bullets " + newBullets.ToString());
             this.bulletManager.SetBullets(playerName, newBullets);
         }
 
         public void UpdateForNewPlayer(Photon.Realtime.Player player)
         {
-            var playerName = $"Player {PhotonNetwork.LocalPlayer.ActorNumber}";
+            var playerName = $"Player {player.ActorNumber}";
+            Debug.Log("update for new player" + playerName);
             var currentScore = this.scoreboard.GetScore(playerName);
             this.photonView.RPC("Network_SetPlayerScore", player, playerName, currentScore);
             this.photonView.RPC("Network_SetPlayerBullets", player, playerName, 15);

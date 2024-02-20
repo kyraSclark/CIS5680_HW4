@@ -9,7 +9,8 @@ namespace MyFirstARGame
     public class GridSpawn : MonoBehaviour
     {
         public GameObject perryObjToSpawn;
-        public GameObject platypusObjToSpawn;        
+        public GameObject platypusObjToSpawn;
+        public string doofPrefabName;
         public float spawnPeriod;
         public int gridDimension;
         public float gridSideLength;
@@ -46,8 +47,8 @@ namespace MyFirstARGame
 
                 int perryPos = spawnPos.Count + 2; // set to impossible index first
                 // Chance for Perry to spawn
-                int r = Random.Range(1, 3);
-                if (r < 2)
+                int r = Random.Range(1, 20);
+                if (r < Doof.Instance.getChance())
                 {
                     GameObject perry =
                         PhotonNetwork.Instantiate(
@@ -60,6 +61,7 @@ namespace MyFirstARGame
 					perry.GetComponent<Platypus>().SetPosition(spawnPos[perryPos]);
 				}
 
+                bool spawnedDoof = false; // Only spawn one doof at a time
                 for (int i = 0; i < spawnPos.Count; i++)
                 {
                     // Do not spawn on Perry grid position
@@ -69,10 +71,18 @@ namespace MyFirstARGame
                         r = Random.Range(1, 3);
                         if (r < 2)
                         {
+                            string name = platypusObjToSpawn.name;
+                            int d = Random.Range(1, 8);
+                            if (!spawnedDoof && d < 2)
+                            {
+                                spawnedDoof = true;
+                                name = doofPrefabName;
+                            }
+                             
                             // Spawn platypus
                             GameObject platypus = 
                                 PhotonNetwork.Instantiate(
-									platypusObjToSpawn.name, 
+                                    name, 
                                     Vector3.zero,
 									platypusObjToSpawn.transform.rotation);
 

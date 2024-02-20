@@ -39,7 +39,7 @@ namespace MyFirstARGame
 
         private void OnGUI()
         {
-            GUILayout.BeginArea(new Rect(0, 0, Screen.width, Screen.height));
+            GUILayout.BeginArea(new Rect(50, 50, Screen.width, Screen.height));
             GUILayout.BeginVertical();
             GUILayout.FlexibleSpace();
 

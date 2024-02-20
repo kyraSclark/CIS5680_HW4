@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2584364136853540569}
   - component: {fileID: 8291317912439844829}
   - component: {fileID: 389742165111947094}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: back legs.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 257510014165056085}
   - component: {fileID: 7312102519751094821}
   - component: {fileID: 3899074534888914894}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: beaver tail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -182,7 +182,8 @@ GameObject:
   - component: {fileID: -350640215950471823}
   - component: {fileID: -8444640491156143853}
   - component: {fileID: -7895451235124096079}
-  m_Layer: 12
+  - component: {fileID: 8115176790550958319}
+  m_Layer: 0
   m_Name: PlatypusPrefab
   m_TagString: Platypus
   m_Icon: {fileID: 0}
@@ -198,7 +199,7 @@ Transform:
   m_GameObject: {fileID: 1366325157767004204}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
   m_LocalPosition: {x: 2.97, y: 0.93148, z: -0.080393}
-  m_LocalScale: {x: 15, y: 15, z: 15}
+  m_LocalScale: {x: 20, y: 20, z: 20}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7878797324486431422}
@@ -210,7 +211,7 @@ Transform:
   - {fileID: 580559344931776214}
   - {fileID: 3215825706689687012}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3319753551598490931
 MeshFilter:
@@ -327,8 +328,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timer: 0
   spawnPeriod: 0
-  animDuration: 0.5
-  offset: 0.05
+  animDuration: 0.3
+  offset: 0
   points: -1
 --- !u!54 &-7895451235124096079
 Rigidbody:
@@ -346,6 +347,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &8115176790550958319
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1366325157767004204}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.011262607, y: 0.01970664, z: 0.0063674226}
+  m_Center: {x: -4.656613e-10, y: -0.00020956896, z: -0.00024673826}
 --- !u!1 &1515628036380058922
 GameObject:
   m_ObjectHideFlags: 0
@@ -357,7 +371,7 @@ GameObject:
   - component: {fileID: 3854489550671983482}
   - component: {fileID: 7926732274828926433}
   - component: {fileID: 4448247627611310892}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: duck bill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -440,7 +454,7 @@ GameObject:
   - component: {fileID: 580559344931776214}
   - component: {fileID: 6707563208798883652}
   - component: {fileID: 757479728947778522}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: platypus eyeball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -523,7 +537,7 @@ GameObject:
   - component: {fileID: 3702496878779516135}
   - component: {fileID: 6489997695090284699}
   - component: {fileID: 5735570468132528291}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: front legs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -606,7 +620,7 @@ GameObject:
   - component: {fileID: 7878797324486431422}
   - component: {fileID: 1881834860126905564}
   - component: {fileID: 2238375107192680289}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: back legs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -689,7 +703,7 @@ GameObject:
   - component: {fileID: 403010013880227453}
   - component: {fileID: 1232891099239327608}
   - component: {fileID: 1444480163609057748}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: back legs.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -772,7 +786,7 @@ GameObject:
   - component: {fileID: 3215825706689687012}
   - component: {fileID: 3176749333727119090}
   - component: {fileID: 3131424190099478118}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: platypus eyeball.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
