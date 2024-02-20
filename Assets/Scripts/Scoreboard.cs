@@ -5,6 +5,7 @@ using UnityEngine;
 internal class Scoreboard : MonoBehaviour
 {
     private Dictionary<string, int> scores;
+    private string timerText;
 
     private void Start()
     {
@@ -35,6 +36,11 @@ internal class Scoreboard : MonoBehaviour
         }
     }
 
+    public void SetTimerText(string timeLeftText)
+    {
+        this.timerText = timeLeftText;
+    }
+
     private void OnGUI()
     {
         GUILayout.BeginArea(new Rect(0, 0, Screen.width, Screen.height));
@@ -45,8 +51,9 @@ internal class Scoreboard : MonoBehaviour
         {
             GUILayout.Label($"{score.Key}: {score.Value}", new GUIStyle { normal = new GUIStyleState { textColor = Color.black }, fontSize = 22});
         }
+		GUILayout.Label(timerText, new GUIStyle { normal = new GUIStyleState { textColor = Color.red }, fontSize = 30 });
 
-        GUILayout.FlexibleSpace();
+		GUILayout.FlexibleSpace();
         GUILayout.EndVertical();
         GUILayout.EndArea();
     }

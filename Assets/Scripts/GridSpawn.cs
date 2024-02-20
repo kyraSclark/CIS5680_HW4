@@ -10,7 +10,8 @@ namespace MyFirstARGame
     {
         public GameObject perryObjToSpawn;
         public GameObject platypusObjToSpawn;
-        public string doofPrefabName;
+        public GameObject doofPrefab;
+        public GameObject maskPrefab;
         public float spawnPeriod;
         public int gridDimension;
         public float gridSideLength;
@@ -64,8 +65,13 @@ namespace MyFirstARGame
                 bool spawnedDoof = false; // Only spawn one doof at a time
                 for (int i = 0; i < spawnPos.Count; i++)
                 {
-                    // Do not spawn on Perry grid position
-                    if (i != perryPos)
+                    //spawn mask under each grid cell
+                    Vector3 maskLoc = spawnPos[i];
+                    maskLoc.y -= maskPrefab.transform.localScale.y / 2f;
+					PhotonNetwork.Instantiate(maskPrefab.name, maskLoc, Quaternion.identity);
+
+					// Do not spawn on Perry grid position
+					if (i != perryPos)
                     {
                         // Random number to spawn platypus
                         r = Random.Range(1, 3);
@@ -76,7 +82,7 @@ namespace MyFirstARGame
                             if (!spawnedDoof && d < 2)
                             {
                                 spawnedDoof = true;
-                                name = doofPrefabName;
+                                name = doofPrefab.name;
                             }
                              
                             // Spawn platypus

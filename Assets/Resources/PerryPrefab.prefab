@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 251900381094787043}
   - component: {fileID: -2554786111954952692}
   - component: {fileID: -2727530051324358620}
+  - component: {fileID: 1789705236949347050}
   m_Layer: 12
   m_Name: PerryPrefab
   m_TagString: Perry
@@ -173,3 +174,15 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 1
   m_UseLocal: 1
+--- !u!114 &1789705236949347050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5764132574627264512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cc956a373e411a48a3267f65b150519, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

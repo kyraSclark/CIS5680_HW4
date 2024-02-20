@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 2584364136853540569}
   - component: {fileID: 8291317912439844829}
   - component: {fileID: 389742165111947094}
-  m_Layer: 0
+  - component: {fileID: 23152910}
+  m_Layer: 12
   m_Name: back legs.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,6 +84,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &23152910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 176712697454546253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cc956a373e411a48a3267f65b150519, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &983293791298340163
 GameObject:
   m_ObjectHideFlags: 0
@@ -94,7 +107,8 @@ GameObject:
   - component: {fileID: 257510014165056085}
   - component: {fileID: 7312102519751094821}
   - component: {fileID: 3899074534888914894}
-  m_Layer: 0
+  - component: {fileID: 1769804501}
+  m_Layer: 12
   m_Name: beaver tail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -166,6 +180,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1769804501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 983293791298340163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cc956a373e411a48a3267f65b150519, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1366325157767004204
 GameObject:
   m_ObjectHideFlags: 0
@@ -183,7 +209,7 @@ GameObject:
   - component: {fileID: -8444640491156143853}
   - component: {fileID: -7895451235124096079}
   - component: {fileID: 8115176790550958319}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: PlatypusPrefab
   m_TagString: Platypus
   m_Icon: {fileID: 0}
@@ -197,7 +223,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1366325157767004204}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+  m_LocalRotation: {x: -0.7069834, y: 0, z: 0, w: 0.7072302}
   m_LocalPosition: {x: 2.97, y: 0.93148, z: -0.080393}
   m_LocalScale: {x: 20, y: 20, z: 20}
   m_ConstrainProportionsScale: 0
@@ -211,8 +237,8 @@ Transform:
   - {fileID: 580559344931776214}
   - {fileID: 3215825706689687012}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: -89.98, y: 0, z: 0}
 --- !u!33 &3319753551598490931
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -328,8 +354,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timer: 0
   spawnPeriod: 0
-  animDuration: 0.3
-  offset: 0
+  animDuration: 0.5
+  offset: 0.1
   points: -1
 --- !u!54 &-7895451235124096079
 Rigidbody:
@@ -371,7 +397,8 @@ GameObject:
   - component: {fileID: 3854489550671983482}
   - component: {fileID: 7926732274828926433}
   - component: {fileID: 4448247627611310892}
-  m_Layer: 0
+  - component: {fileID: 1620844238}
+  m_Layer: 12
   m_Name: duck bill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -443,6 +470,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1620844238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1515628036380058922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cc956a373e411a48a3267f65b150519, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2994101765717989788
 GameObject:
   m_ObjectHideFlags: 0
@@ -454,7 +493,8 @@ GameObject:
   - component: {fileID: 580559344931776214}
   - component: {fileID: 6707563208798883652}
   - component: {fileID: 757479728947778522}
-  m_Layer: 0
+  - component: {fileID: 1558610506}
+  m_Layer: 12
   m_Name: platypus eyeball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -526,6 +566,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1558610506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2994101765717989788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cc956a373e411a48a3267f65b150519, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3831072791166379814
 GameObject:
   m_ObjectHideFlags: 0
@@ -537,7 +589,8 @@ GameObject:
   - component: {fileID: 3702496878779516135}
   - component: {fileID: 6489997695090284699}
   - component: {fileID: 5735570468132528291}
-  m_Layer: 0
+  - component: {fileID: 612477212}
+  m_Layer: 12
   m_Name: front legs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -609,6 +662,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &612477212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3831072791166379814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cc956a373e411a48a3267f65b150519, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3904090565531722538
 GameObject:
   m_ObjectHideFlags: 0
@@ -620,7 +685,8 @@ GameObject:
   - component: {fileID: 7878797324486431422}
   - component: {fileID: 1881834860126905564}
   - component: {fileID: 2238375107192680289}
-  m_Layer: 0
+  - component: {fileID: 678156503}
+  m_Layer: 12
   m_Name: back legs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -692,6 +758,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &678156503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3904090565531722538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cc956a373e411a48a3267f65b150519, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7563663502813912637
 GameObject:
   m_ObjectHideFlags: 0
@@ -703,7 +781,8 @@ GameObject:
   - component: {fileID: 403010013880227453}
   - component: {fileID: 1232891099239327608}
   - component: {fileID: 1444480163609057748}
-  m_Layer: 0
+  - component: {fileID: 671213915}
+  m_Layer: 12
   m_Name: back legs.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -775,6 +854,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &671213915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7563663502813912637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cc956a373e411a48a3267f65b150519, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7850812484637237146
 GameObject:
   m_ObjectHideFlags: 0
@@ -786,7 +877,8 @@ GameObject:
   - component: {fileID: 3215825706689687012}
   - component: {fileID: 3176749333727119090}
   - component: {fileID: 3131424190099478118}
-  m_Layer: 0
+  - component: {fileID: 1915713780}
+  m_Layer: 12
   m_Name: platypus eyeball.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -858,3 +950,15 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1915713780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7850812484637237146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cc956a373e411a48a3267f65b150519, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

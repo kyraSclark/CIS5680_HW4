@@ -1,11 +1,11 @@
 namespace MyFirstARGame
 {
-    using Photon.Pun;
-    using UnityEngine;
-    
-    /// <summary>
-    /// You can use this class to make RPC calls between the clients. It is already spawned on each client with networking capabilities.
-    /// </summary>
+	using Photon.Pun;
+	using UnityEngine;
+
+	/// <summary>
+	/// You can use this class to make RPC calls between the clients. It is already spawned on each client with networking capabilities.
+	/// </summary>
     public class NetworkCommunication : MonoBehaviourPun
     {
         [SerializeField]
@@ -13,6 +13,11 @@ namespace MyFirstARGame
 
         [SerializeField]
         private BulletManager bulletManager;
+
+		public float timerMaxInSeconds;
+        public bool enableTimer = false;
+
+        private float timeLeft;
 
         public void IncrementScore()
         {
@@ -70,25 +75,59 @@ namespace MyFirstARGame
             this.bulletManager.SetBullets(playerName, newBullets);
         }
 
-        public void UpdateForNewPlayer(Photon.Realtime.Player player)
+		[PunRPC]
+		public void Network_SetTimerLeftText(string text)
+		{
+            this.scoreboard.SetTimerText(text);
+		}
+
+		[PunRPC]
+		public void Network_EndTimerOnAllClients()
+		{
+			var globalState = GameObject.Find("GlobalState").GetComponent<GlobalClientState>();
+			globalState.TimerEnded();
+		}
+
+		public void UpdateForNewPlayer(Photon.Realtime.Player player)
         {
-            var playerName = $"Player {player.ActorNumber}";
+            var playerName = $"Player {player.ActorNumber - 1}";
             Debug.Log("update for new player" + playerName);
             var currentScore = this.scoreboard.GetScore(playerName);
             this.photonView.RPC("Network_SetPlayerScore", player, playerName, currentScore);
             this.photonView.RPC("Network_SetPlayerBullets", player, playerName, 15);
+		}
+
+        public string GetTimeLeft()
+        {
+            float minutes = Mathf.FloorToInt(timeLeft / 60);
+            float seconds = Mathf.FloorToInt(timeLeft % 60);
+            return string.Format("{0:00} : {1:00}", minutes, seconds);
         }
 
-        // Start is called before the first frame update
         void Start()
         {
-
+            timeLeft = timerMaxInSeconds;
+            enableTimer = true;
         }
 
-        // Update is called once per frame
         void Update()
         {
-
+            if (!PhotonNetwork.IsMasterClient)
+                return;
+            if (enableTimer)
+            {
+                if (timeLeft > 0f)
+                {
+                    timeLeft -= Time.deltaTime;
+                    this.photonView.RPC("Network_SetTimerLeftText", RpcTarget.All, GetTimeLeft());
+				}
+                else
+                {
+                    enableTimer = false;
+					this.photonView.RPC("Network_SetTimerLeftText", RpcTarget.All, "Time is up!");
+					this.photonView.RPC("Network_EndTimerOnAllClients", RpcTarget.All);
+				}
+            }
         }
     }
 

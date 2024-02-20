@@ -77,7 +77,7 @@ namespace MyFirstARGame
             {
                 GUI.Label(new Rect(0, Screen.height / 2 + 300, 100, 100), "Not joined to room", style);
             }
-        }
+		}
 
         public override void OnConnectedToMaster()
         {
