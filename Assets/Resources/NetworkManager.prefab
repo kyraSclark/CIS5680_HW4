@@ -33,7 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5055995115842406564
 MonoBehaviour:
@@ -49,7 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreboard: {fileID: 7788529694523478808}
   bulletManager: {fileID: 4982848083970750894}
-  timerMaxInSeconds: 10
+  timerMaxInSeconds: 60
   enableTimer: 0
 --- !u!114 &4608888377164664123
 MonoBehaviour:

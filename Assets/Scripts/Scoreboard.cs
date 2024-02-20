@@ -37,23 +37,23 @@ internal class Scoreboard : MonoBehaviour
     }
 
     public string GetWinnerText()
-    {
-        int max = -7;
-        var winner = "";
+        {
+            int max = -7;
+            var winner = "";
 
-        Debug.Log("total scores: " + scores.Count);
-		foreach (var score in this.scores)
-		{
-            Debug.Log($"debugging final call : {score.Key}: {score.Value}");
-			if (score.Value > max)
+            Debug.Log("total scores: " + scores.Count);
+            foreach (var score in this.scores)
             {
-                max = score.Value;
-                winner = score.Key;
+                Debug.Log($"debugging final call : {score.Key}: {score.Value}");
+                if (score.Value > max)
+                {
+                    max = score.Value;
+                    winner = score.Key;
+                }
             }
-		}
-		Debug.Log($"{winner} wins with a score of {max}");
-		return $"{winner} wins with a score of {max}";
-	}
+            Debug.Log($"{winner} wins with a score of {max}");
+            return $"{winner} wins with a score of {max}";
+        }
 
     public void SetTimerText(string timeLeftText)
     {
@@ -68,7 +68,10 @@ internal class Scoreboard : MonoBehaviour
 
         foreach (var score in this.scores)
         {
-            GUILayout.Label($"{score.Key}: {score.Value}", new GUIStyle { normal = new GUIStyleState { textColor = Color.black }, fontSize = 22});
+            if (score.Key != "Player 1")
+            {
+                GUILayout.Label($"{score.Key}: {score.Value}", new GUIStyle { normal = new GUIStyleState { textColor = Color.black }, fontSize = 22});
+            }
         }
 		GUILayout.Label(timerText, new GUIStyle { normal = new GUIStyleState { textColor = Color.red }, fontSize = 30 });
 

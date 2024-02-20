@@ -64,14 +64,14 @@ namespace MyFirstARGame
         [PunRPC]
         public void Network_SetPlayerScore(string playerName, int newScore)
         {
-            Debug.Log($"Player {playerName} scored!");
+            Debug.Log($"Player {playerName} scored {newScore}!");
             this.scoreboard.SetScore(playerName, newScore);
         }
 
         [PunRPC]
         public void Network_SetPlayerBullets(string playerName, int newBullets)
         {
-            Debug.Log("set bullets " + newBullets.ToString());
+            Debug.Log("set " + playerName + " bullets " + newBullets.ToString());
             this.bulletManager.SetBullets(playerName, newBullets);
         }
 
@@ -93,8 +93,8 @@ namespace MyFirstARGame
             var playerName = $"Player {player.ActorNumber}";
             Debug.Log("update for new player" + playerName);
             var currentScore = this.scoreboard.GetScore(playerName);
-            this.photonView.RPC("Network_SetPlayerScore", player, playerName, currentScore);
-            this.photonView.RPC("Network_SetPlayerBullets", player, playerName, 15);
+            this.photonView.RPC("Network_SetPlayerScore", RpcTarget.All, playerName, 0);
+            this.photonView.RPC("Network_SetPlayerBullets", RpcTarget.All, playerName, 15);
 		}
 
         public string GetTimeLeft()
@@ -124,6 +124,8 @@ namespace MyFirstARGame
                 else
                 {
                     enableTimer = false;
+                    int max;
+                    string winner;
 					string gameOverText = this.scoreboard.GetWinnerText();
 					this.photonView.RPC("Network_SetTimerLeftText", RpcTarget.All, "Time is up!");
 					this.photonView.RPC("Network_EndTimerOnAllClients", RpcTarget.All, gameOverText);

@@ -3256,6 +3256,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameOverTimeUp
       objectReference: {fileID: 0}
+    - target: {fileID: 541097605340450007, guid: 44b3416351c52c34db545d08a4db8cb1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1256015053016594900, guid: 44b3416351c52c34db545d08a4db8cb1,
         type: 3}
       propertyPath: m_Pivot.x
@@ -3360,6 +3365,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1608109438856073059, guid: 44b3416351c52c34db545d08a4db8cb1,
+        type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1608109438856073059, guid: 44b3416351c52c34db545d08a4db8cb1,
+        type: 3}
+      propertyPath: m_FontData.m_VerticalOverflow
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2678080270100687753, guid: 44b3416351c52c34db545d08a4db8cb1,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 250
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []

@@ -78,7 +78,7 @@ namespace MyFirstARGame
                         if (r < 2)
                         {
                             string name = platypusObjToSpawn.name;
-                            int d = Random.Range(1, 8);
+                            int d = Random.Range(1, 16);
                             if (!spawnedDoof && d < 2)
                             {
                                 spawnedDoof = true;
