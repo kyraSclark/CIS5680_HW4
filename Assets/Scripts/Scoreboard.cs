@@ -36,6 +36,25 @@ internal class Scoreboard : MonoBehaviour
         }
     }
 
+    public string GetWinnerText()
+    {
+        int max = -7;
+        var winner = "";
+
+        Debug.Log("total scores: " + scores.Count);
+		foreach (var score in this.scores)
+		{
+            Debug.Log($"debugging final call : {score.Key}: {score.Value}");
+			if (score.Value > max)
+            {
+                max = score.Value;
+                winner = score.Key;
+            }
+		}
+		Debug.Log($"{winner} wins with a score of {max}");
+		return $"{winner} wins with a score of {max}";
+	}
+
     public void SetTimerText(string timeLeftText)
     {
         this.timerText = timeLeftText;

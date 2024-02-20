@@ -82,15 +82,15 @@ namespace MyFirstARGame
 		}
 
 		[PunRPC]
-		public void Network_EndTimerOnAllClients()
+		public void Network_EndTimerOnAllClients(string text)
 		{
-			var globalState = GameObject.Find("GlobalState").GetComponent<GlobalClientState>();
-			globalState.TimerEnded();
+			var globalState = GameObject.Find("GlobalState").GetComponent<GlobalClientState>();            
+			globalState.TimerEnded(text);
 		}
 
 		public void UpdateForNewPlayer(Photon.Realtime.Player player)
         {
-            var playerName = $"Player {player.ActorNumber - 1}";
+            var playerName = $"Player {player.ActorNumber}";
             Debug.Log("update for new player" + playerName);
             var currentScore = this.scoreboard.GetScore(playerName);
             this.photonView.RPC("Network_SetPlayerScore", player, playerName, currentScore);
@@ -124,8 +124,9 @@ namespace MyFirstARGame
                 else
                 {
                     enableTimer = false;
+					string gameOverText = this.scoreboard.GetWinnerText();
 					this.photonView.RPC("Network_SetTimerLeftText", RpcTarget.All, "Time is up!");
-					this.photonView.RPC("Network_EndTimerOnAllClients", RpcTarget.All);
+					this.photonView.RPC("Network_EndTimerOnAllClients", RpcTarget.All, gameOverText);
 				}
             }
         }
