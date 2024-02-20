@@ -27,12 +27,11 @@ namespace MyFirstARGame
         public void SetPosition(Vector3 pos)
         {
 			startPos = gameObject.transform.position + pos;
-            startPos.y -= GetComponent<Renderer>().bounds.size.y/2f + offset;//gameObject.transform.localScale.y + offset;
+            startPos.y -= GetComponent<Renderer>().bounds.size.y/2f + offset;
 			endPos = gameObject.transform.position + pos;
-            endPos.y += GetComponent<Renderer>().bounds.size.y/2f + offset; //gameObject.transform.localScale.y - offset;
+            endPos.y += GetComponent<Renderer>().bounds.size.y/2f + offset;
 
 			StartCoroutine(ShowAnim(startPos, endPos));            
-			//gameObject.transform.position = pos;
         }
 
         // Update is called once per frame
@@ -54,8 +53,6 @@ namespace MyFirstARGame
 
         public void Die()
         {
-/*            var networkCommunication = FindObjectOfType<NetworkCommunication>();
-            networkCommunication.IncrementScore(points);*/
             PhotonNetwork.Destroy(gameObject);
         }
 

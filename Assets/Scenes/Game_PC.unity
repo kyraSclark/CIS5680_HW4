@@ -235,12 +235,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52ab874efe39818438a2d3e88776520b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  perryObjToSpawn: {fileID: 5764132574627264512, guid: 7260be19e47909140a38471cab607a51,
-    type: 3}
-  platypusObjToSpawn: {fileID: 4356504156084581996, guid: 3557cab451342df4b95e96a042844ff7,
-    type: 3}
-  platypusPrefabName: PlatypusPrefab
   perryPrefabName: PerryPrefab
+  platypusPrefabName: PlatypusPrefab
+  doofPrefabName: DoofPrefab
   timer: 0
   spawnPeriod: 0
   originInScreenCoords: {x: 0, y: 0, z: 0}
@@ -361,6 +358,50 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &471614219
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 471614221}
+  - component: {fileID: 471614220}
+  m_Layer: 0
+  m_Name: Doof
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &471614220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 471614219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9da57f23223fc1e40acacb06ea4abd69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &471614221
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 471614219}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &635115215
 GameObject:
   m_ObjectHideFlags: 0

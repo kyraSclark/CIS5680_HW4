@@ -35,11 +35,11 @@ namespace MyFirstARGame
             this.photonView.RPC("Network_SetPlayerBullets", RpcTarget.All, playerName, currentBullets - 1);
         }
         
-        public void IncrementBullets()
+        public void IncrementBullets(int b)
         {
             var playerName = $"Player {PhotonNetwork.LocalPlayer.ActorNumber}";
             var currentBullets = this.bulletManager.GetBullets(playerName);
-            this.photonView.RPC("Network_SetPlayerBullets", RpcTarget.All, playerName, currentBullets + 5);
+            this.photonView.RPC("Network_SetPlayerBullets", RpcTarget.All, playerName, currentBullets + b);
         }
 
         public void SetBullets()
