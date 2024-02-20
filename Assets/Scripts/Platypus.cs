@@ -62,17 +62,20 @@ namespace MyFirstARGame
 
         private IEnumerator ShowAnim(Vector3 startPos, Vector3 endPos, bool destroy = false)
         {
-            gameObject.transform.position = startPos;
-            float elapsed = 0f;
-            while (elapsed < animDuration)
+            if (PhotonNetwork.IsMasterClient)
             {
-                gameObject.transform.position = Vector3.Lerp(startPos, endPos, elapsed/animDuration);
-                elapsed += Time.deltaTime;
-                yield return null;
-            }
-            if (destroy)
-            {
-                PhotonNetwork.Destroy(gameObject);
+                gameObject.transform.position = startPos;
+                float elapsed = 0f;
+                while (elapsed < animDuration)
+                {
+                    gameObject.transform.position = Vector3.Lerp(startPos, endPos, elapsed / animDuration);
+                    elapsed += Time.deltaTime;
+                    yield return null;
+                }
+                if (destroy)
+                {
+                    PhotonNetwork.Destroy(gameObject);
+                }
             }
 		}
     }

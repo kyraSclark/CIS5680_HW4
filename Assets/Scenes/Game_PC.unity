@@ -237,13 +237,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   perryObjToSpawn: {fileID: 5764132574627264512, guid: 7260be19e47909140a38471cab607a51,
     type: 3}
-  platypusObjToSpawn: {fileID: 4356504156084581996, guid: 3557cab451342df4b95e96a042844ff7,
+  platypusObjToSpawn: {fileID: 1366325157767004204, guid: dab6aadb246f5a5439117e15e46ab2c5,
     type: 3}
-  platypusPrefabName: PlatypusPrefab
-  perryPrefabName: PerryPrefab
-  timer: 0
-  spawnPeriod: 0
-  originInScreenCoords: {x: 0, y: 0, z: 0}
+  spawnPeriod: 3
+  gridDimension: 4
+  gridSideLength: 0.6
 --- !u!4 &217228161
 Transform:
   m_ObjectHideFlags: 0
