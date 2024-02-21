@@ -35,5 +35,10 @@ namespace MyFirstARGame
         {
             return perryChance;
         }
+
+        public void resetChance()
+        {
+            perryChance = 11;
+        }
     }
 }
