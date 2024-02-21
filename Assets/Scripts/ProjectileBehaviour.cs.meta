@@ -3,7 +3,8 @@ guid: efc03f4f6e9a1774db9a5176a1b08228
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - perryGrowl: {fileID: 8300000, guid: 13311e483bedc114e95fa47ae8ae5fd6, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

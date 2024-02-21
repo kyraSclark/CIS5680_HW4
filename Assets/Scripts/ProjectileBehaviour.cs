@@ -9,9 +9,9 @@ namespace MyFirstARGame
     public class ProjectileBehaviour : MonoBehaviour
     {
         [SerializeField]
-        private Material[] projectileMaterials;
+        private Material[] projectileMaterials;		
 
-        private void Awake()
+		private void Awake()
         {
             // Pick a material based on our player number so that we can distinguish between projectiles. We use the player number
             // but wrap around if we have more players than materials. This number was passed to us when the projectile was instantiated.
@@ -38,7 +38,7 @@ namespace MyFirstARGame
 
                 Platypus perry = collider.gameObject.GetComponent<Platypus>();
                 networkCommunication.IncrementScore(perry.points);
-                Debug.Log("collided with Perry");
+				Debug.Log("collided with Perry");
                 perry.Die();
                 Destroy(gameObject);
             }

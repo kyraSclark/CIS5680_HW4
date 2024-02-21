@@ -14,6 +14,10 @@ namespace MyFirstARGame
         [SerializeField]
         private BulletManager bulletManager;
 
+		public AudioClip perryGrowl;
+		public AudioClip platypusScream;
+		public AudioClip doofJingle;
+
 		public float timerMaxInSeconds;
         public bool enableTimer;
 
@@ -33,7 +37,9 @@ namespace MyFirstARGame
         {
             var playerName = $"Player {PhotonNetwork.LocalPlayer.ActorNumber}";
             var currentScore = this.scoreboard.GetScore(playerName);
-            this.photonView.RPC("Network_SetPlayerScore", RpcTarget.All, playerName, currentScore + points);
+            if(points < 0)
+                AudioSource.PlayClipAtPoint(perryGrowl, gameObject.transform.position);
+			this.photonView.RPC("Network_SetPlayerScore", RpcTarget.All, playerName, currentScore + points);
         }
 
         public void DecrementBullets()
@@ -47,7 +53,11 @@ namespace MyFirstARGame
         {
             var playerName = $"Player {PhotonNetwork.LocalPlayer.ActorNumber}";
             var currentBullets = this.bulletManager.GetBullets(playerName);
-            this.photonView.RPC("Network_SetPlayerBullets", RpcTarget.All, playerName, currentBullets + b);
+            if(b>1)
+				AudioSource.PlayClipAtPoint(doofJingle, gameObject.transform.position);
+            else
+				AudioSource.PlayClipAtPoint(platypusScream, gameObject.transform.position);
+			this.photonView.RPC("Network_SetPlayerBullets", RpcTarget.All, playerName, currentBullets + b);
         }
 
         public void SetBullets()

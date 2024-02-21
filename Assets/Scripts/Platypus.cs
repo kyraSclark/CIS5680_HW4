@@ -6,13 +6,13 @@ namespace MyFirstARGame
 {
     using Photon.Pun;
 
-    public class Platypus : MonoBehaviour
+    public class Platypus : MonoBehaviourPun
     {
         public float timer;
         public float spawnPeriod;
 		public float animDuration;
         public float offset;
-		public int points;
+		public int points;		
 
 		private Vector3 startPos;
 		private Vector3 endPos;
@@ -53,7 +53,10 @@ namespace MyFirstARGame
 
         public void Die()
         {
-            PhotonNetwork.Destroy(gameObject);
+            if (PhotonNetwork.IsMasterClient || photonView.IsMine)
+            {
+                PhotonNetwork.Destroy(gameObject);
+            }
         }
 
         private IEnumerator ShowAnim(Vector3 startPos, Vector3 endPos, bool destroy = false)

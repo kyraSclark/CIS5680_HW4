@@ -49,6 +49,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreboard: {fileID: 7788529694523478808}
   bulletManager: {fileID: 4982848083970750894}
+  perryGrowl: {fileID: 8300000, guid: 646640a04fbc79b44843dd0fdb5e5852, type: 3}
+  platypusScream: {fileID: 8300000, guid: ffb0c09981fe65f49b6ebf89af62f2d3, type: 3}
+  doofJingle: {fileID: 8300000, guid: bbf33c3ff75b68141a401a53864a31b5, type: 3}
   timerMaxInSeconds: 5
   enableTimer: 0
 --- !u!114 &4608888377164664123

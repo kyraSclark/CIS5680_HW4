@@ -2,10 +2,11 @@
 {
     using UnityEngine;
     using Photon.Pun;
+	using System;
 
-    /// <summary>
-    /// Launches projectiles from a touch point with the specified <see cref="initialSpeed"/>.
-    /// </summary>
+	/// <summary>
+	/// Launches projectiles from a touch point with the specified <see cref="initialSpeed"/>.
+	/// </summary>
     [RequireComponent(typeof(Camera))]
     public class ProjectileLauncher : PressInputBase
     {
@@ -13,13 +14,13 @@
         private Rigidbody projectilePrefab;
 
         [SerializeField]
-        private float initialSpeed = 25;
+        private float initialSpeed = 25;		
 
-        void Start()
+		void Start()
         {
         }
 
-        protected override void OnPressBegan(Vector3 position)
+		protected override void OnPressBegan(Vector3 position)
         {
             var networkCommunication = FindObjectOfType<NetworkCommunication>();
             if (networkCommunication.GetBullets() > 0)
