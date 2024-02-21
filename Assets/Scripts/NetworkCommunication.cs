@@ -74,7 +74,9 @@ namespace MyFirstARGame
         public void Network_ResetScoreBoard(int initScore)
         {
             this.scoreboard.ResetScoreBoard(initScore);
-        }
+			this.timeLeft = timerMaxInSeconds;
+			this.gameOver = false;
+		}
 
         [PunRPC]
         public void Network_ResetBullets(int initBulletCount)
@@ -142,7 +144,6 @@ namespace MyFirstARGame
         public void ResetGameState()
         {
             timeLeft = timerMaxInSeconds;
-            gameOver = false;
             this.photonView.RPC("Network_ResetScoreBoard", RpcTarget.All, STARTING_SCORE);
             this.photonView.RPC("Network_ResetBullets", RpcTarget.All, STARTING_BULLETS); //resets both scores and client ready status
             this.photonView.RPC("Network_ResetTimerOnAllClients", RpcTarget.All, "INVALID");
@@ -177,7 +178,8 @@ namespace MyFirstARGame
                 else
                 {
 					gameOver = true;
-                    int max;
+					Debug.Log($"I reset it back hehehehe");
+					int max;
                     string winner;
 					string gameOverText = this.scoreboard.GetWinnerText();
 					this.photonView.RPC("Network_SetTimerLeftText", RpcTarget.All, "Time is up!");
