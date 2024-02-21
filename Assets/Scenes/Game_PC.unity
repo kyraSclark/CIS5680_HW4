@@ -253,6 +253,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52ab874efe39818438a2d3e88776520b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  globalState: {fileID: 1614366713}
   perryObjToSpawn: {fileID: 5764132574627264512, guid: 7260be19e47909140a38471cab607a51,
     type: 3}
   platypusObjToSpawn: {fileID: 1366325157767004204, guid: dab6aadb246f5a5439117e15e46ab2c5,
@@ -405,7 +406,7 @@ PrefabInstance:
     - target: {fileID: 1608109438856073059, guid: 44b3416351c52c34db545d08a4db8cb1,
         type: 3}
       propertyPath: m_Text
-      value: Some default text that you should never see
+      value: Default text that you should never see
       objectReference: {fileID: 0}
     - target: {fileID: 1608109438856073059, guid: 44b3416351c52c34db545d08a4db8cb1,
         type: 3}
@@ -986,6 +987,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 360}
+--- !u!1 &1614366713 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6184498715482120214, guid: 12699e664676e394ab846d90f3de841d,
+    type: 3}
+  m_PrefabInstance: {fileID: 2091539021}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1971553534
 GameObject:
   m_ObjectHideFlags: 0

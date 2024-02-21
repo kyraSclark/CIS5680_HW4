@@ -18,8 +18,10 @@ namespace MyFirstARGame
         public bool enableTimer = false;
 
         private float timeLeft;
+        private int STARTING_SCORE = 0;
+		private int STARTING_BULLETS = 15;
 
-        public void IncrementScore()
+		public void IncrementScore()
         {
             var playerName = $"Player {PhotonNetwork.LocalPlayer.ActorNumber}";
             var currentScore = this.scoreboard.GetScore(playerName);
@@ -61,7 +63,19 @@ namespace MyFirstARGame
             return this.bulletManager.GetBullets(playerName);
         }
 
-        [PunRPC]
+		[PunRPC]
+		public void Network_ResetScoreBoard(int initScore)
+		{
+			this.scoreboard.ResetScoreBoard(initScore);
+		}
+
+		[PunRPC]
+		public void Network_ResetBullets(int initBulletCount)
+		{
+			this.bulletManager.ResetBulletManager(initBulletCount);
+		}
+
+		[PunRPC]
         public void Network_SetPlayerScore(string playerName, int newScore)
         {
             Debug.Log($"Player {playerName} scored {newScore}!");
@@ -82,6 +96,13 @@ namespace MyFirstARGame
 		}
 
 		[PunRPC]
+		public void Network_ResetTimerOnAllClients(string text)
+		{
+			var globalState = GameObject.Find("GlobalState").GetComponent<GlobalClientState>();
+			globalState.ResetTimer(text);
+		}
+
+		[PunRPC]
 		public void Network_EndTimerOnAllClients(string text)
 		{
 			var globalState = GameObject.Find("GlobalState").GetComponent<GlobalClientState>();            
@@ -93,8 +114,8 @@ namespace MyFirstARGame
             var playerName = $"Player {player.ActorNumber}";
             Debug.Log("update for new player" + playerName);
             var currentScore = this.scoreboard.GetScore(playerName);
-            this.photonView.RPC("Network_SetPlayerScore", RpcTarget.All, playerName, 0);
-            this.photonView.RPC("Network_SetPlayerBullets", RpcTarget.All, playerName, 15);
+            this.photonView.RPC("Network_SetPlayerScore", RpcTarget.All, playerName, STARTING_SCORE);
+            this.photonView.RPC("Network_SetPlayerBullets", RpcTarget.All, playerName, STARTING_BULLETS);
 		}
 
         public string GetTimeLeft()
@@ -103,6 +124,15 @@ namespace MyFirstARGame
             float seconds = Mathf.FloorToInt(timeLeft % 60);
             return string.Format("{0:00} : {1:00}", minutes, seconds);
         }
+
+        public void ResetGameState()
+        {
+			timeLeft = timerMaxInSeconds;
+			this.photonView.RPC("Network_ResetScoreBoard", RpcTarget.All, STARTING_SCORE);
+			this.photonView.RPC("Network_ResetBullets", RpcTarget.All, STARTING_BULLETS);
+			this.photonView.RPC("Network_ResetTimerOnAllClients", RpcTarget.All, "INVALID");
+            enableTimer = true;
+		}
 
         void Start()
         {

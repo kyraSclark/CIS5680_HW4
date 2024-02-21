@@ -1,15 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 internal class Scoreboard : MonoBehaviour
 {
     private Dictionary<string, int> scores;
+    private bool isClientReady;
     private string timerText;
 
     private void Start()
     {
         this.scores = new Dictionary<string, int>();
+        isClientReady = false;
     }
 
     public void SetScore(string playerName, int score)
@@ -36,6 +39,17 @@ internal class Scoreboard : MonoBehaviour
         }
     }
 
+    public void ClientSignalReady()
+    {
+        this.isClientReady = true; 
+    }
+
+    public void ResetScoreBoard(int initScore)
+    {
+        scores = scores.ToDictionary(e => e.Key, e => initScore);
+        isClientReady = false;
+	}
+
     public string GetWinnerText()
         {
             int max = -7;
@@ -44,7 +58,6 @@ internal class Scoreboard : MonoBehaviour
             Debug.Log("total scores: " + scores.Count);
             foreach (var score in this.scores)
             {
-                Debug.Log($"debugging final call : {score.Key}: {score.Value}");
                 if (score.Value > max)
                 {
                     max = score.Value;

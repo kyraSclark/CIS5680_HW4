@@ -1,6 +1,6 @@
 ﻿namespace MyFirstARGame
 {
-    using UnityEngine;
+	using UnityEngine;
     using UnityEngine.UI;
     using UnityEngine.XR.Interaction.Toolkit.AR;
 
@@ -12,19 +12,25 @@
         [SerializeField]
         private GameObject canvas;
 
-        [SerializeField]
+		[SerializeField]
+		private GameObject globalState;
+
+		[SerializeField]
         private GameObject togglePlacementButton;
 
         [SerializeField]
         private GameObject toggleManipulateButton;
 
-        private bool isPlacing;
-        private bool isManipulating;
+		[SerializeField]
+		private GameObject toggleClientReadyButton;
 
-        /// <summary>
-        /// Gets a value indicating whether the user is currently idle, i.e., no special UI mode is active.
-        /// </summary>
-        public bool IsIdle => !this.isPlacing && !this.isManipulating;
+		private bool isPlacing;
+        private bool isManipulating;        
+
+		/// <summary>
+		/// Gets a value indicating whether the user is currently idle, i.e., no special UI mode is active.
+		/// </summary>
+		public bool IsIdle => !this.isPlacing && !this.isManipulating;
 
         public void TogglePlacementButtonPressed()
         {
@@ -93,5 +99,19 @@
         {
             button.GetComponent<Image>().color = state ? Color.green : Color.white;
         }
-    }
+
+		public void OnClickPlayAgain()
+		{
+			var networkCommunication = FindObjectOfType<MyFirstARGame.NetworkCommunication>();
+			networkCommunication.ResetGameState();
+		}
+
+        public void OnClientReady()
+        {
+            var globalClientState = globalState.GetComponent<MyFirstARGame.GlobalClientState>();
+            globalClientState.ToggleClientReady();
+            SetButtonState(toggleClientReadyButton, globalClientState.IsClientReady());
+            toggleClientReadyButton.GetComponent<Text>().text = globalClientState.IsClientReady() ? "Ready!" : "Ready?";
+		}
+	}
 }

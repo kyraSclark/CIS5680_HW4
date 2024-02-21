@@ -1,11 +1,11 @@
 namespace MyFirstARGame
 {
-    using Photon.Pun;
-    using UnityEngine;
+	using Photon.Pun;
+	using UnityEngine;
 
-    /// <summary>
-    /// Enables basic network functionality by connecting to the Photon server.
-    /// </summary>
+	/// <summary>
+	/// Enables basic network functionality by connecting to the Photon server.
+	/// </summary>
     public class NetworkLauncher : MonoBehaviourPunCallbacks
     {
         /// <summary>
