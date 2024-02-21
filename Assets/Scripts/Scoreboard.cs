@@ -54,12 +54,17 @@ internal class Scoreboard : MonoBehaviour
     public void ResetScoreBoard(int initScore)
     {
         scores = scores.ToDictionary(e => e.Key, e => initScore);
+        ResetReadyStatus();
+	}
+
+    public void ResetReadyStatus()
+    {
 		readyStat = readyStat.ToDictionary(e => e.Key, e => false);
-        if (readyStat.ContainsKey("Player 1"))
-        {
-            Debug.Log("defaulting server to true");
-            readyStat["Player 1"] = true;
-        }
+		if (readyStat.ContainsKey("Player 1"))
+		{
+			Debug.Log("defaulting server to true");
+			readyStat["Player 1"] = true;
+		}
 	}
 
     public bool areAllClientsReady()
