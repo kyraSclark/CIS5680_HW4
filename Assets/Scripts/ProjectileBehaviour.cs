@@ -37,8 +37,9 @@ namespace MyFirstARGame
                 networkCommunication.IncrementBullets(1);
 
                 Platypus perry = collider.gameObject.GetComponent<Platypus>();
-                networkCommunication.IncrementScore(perry.points);
-				Debug.Log("collided with Perry");
+
+                networkCommunication.IncrementScore(perry.points); // add 5 points
+                Debug.Log("collided with Perry");
                 perry.Die();
                 Destroy(gameObject);
             }
@@ -48,13 +49,13 @@ namespace MyFirstARGame
 
                 Debug.Log("collided with platypus");
                 Platypus plat = collider.gameObject.GetComponent<Platypus>();
-                networkCommunication.IncrementScore(plat.points);
+                networkCommunication.IncrementScore(plat.points); // subtract 1 point
                 plat.Die();
                 Destroy(gameObject);
             }
             else if (collider.CompareTag("Doof"))
             {
-                // Perry gives player 10 bullets
+                // Doof gives player 5 bullets
                 var networkCommunication = FindObjectOfType<NetworkCommunication>();
                 networkCommunication.IncrementBullets(5);
 
