@@ -45,10 +45,10 @@ namespace MyFirstARGame
             else if (collider.CompareTag("Platypus"))
             {
                 var networkCommunication = FindObjectOfType<NetworkCommunication>();
-                networkCommunication.IncrementScore(plat.points); // subtract 1 point
 
                 Debug.Log("collided with platypus");
                 Platypus plat = collider.gameObject.GetComponent<Platypus>();
+                networkCommunication.IncrementScore(plat.points); // subtract 1 point
                 plat.Die();
                 Destroy(gameObject);
             }

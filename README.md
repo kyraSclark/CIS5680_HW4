@@ -2,8 +2,6 @@
 
 ### Saksham Nagpal & Kyra CLark
 
-[INSERT VIDEO]
-
 ### Game Features
 Our game is a variation of the class arcade game "Whack-a-Mole." There is a time limit, and when both players declare that they are ready, the timer begins to count down. In that time, the players must attempt to shoot the "Perry" from the assemblage of platypi that appear every few seconds. Unlike the normal platypi (which decreases your points if you hit them), Perry the Platypus is wearing a small hat and will award players with points and one extra bullet if shot.
 #### A win/loss condition
