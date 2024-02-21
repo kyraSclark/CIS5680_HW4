@@ -8,7 +8,8 @@ namespace MyFirstARGame
 
     public class GridSpawn : MonoBehaviour
     {
-        public GameObject perryObjToSpawn;
+        public GameObject globalState;
+		public GameObject perryObjToSpawn;
         public GameObject platypusObjToSpawn;
         public GameObject doofPrefab;
         public GameObject maskPrefab;
@@ -17,15 +18,17 @@ namespace MyFirstARGame
         public float gridSideLength;
 
 		private float timer;
+        private GlobalClientState subscriberState;
 		private List<Vector3> spawnPos = new List<Vector3>();
 
         // Start is called before the first frame update
         void Start()
         {
             timer = 0;
+            subscriberState = globalState.GetComponent<GlobalClientState>();
 
-            //spawning platypi over a grid centered at the origin
-            float maxCoordinate = (gridDimension % 2 == 0) ? (gridDimension / 2f - 0.5f) * gridSideLength : (gridDimension - 1f) / 2f * gridSideLength;
+			//spawning platypi over a grid centered at the origin
+			float maxCoordinate = (gridDimension % 2 == 0) ? (gridDimension / 2f - 0.5f) * gridSideLength : (gridDimension - 1f) / 2f * gridSideLength;
 
             for (float x = -maxCoordinate; x <= maxCoordinate; x += gridSideLength)
             {
@@ -40,7 +43,13 @@ namespace MyFirstARGame
         // Update is called once per frame
         void Update()
         {
-            timer += Time.deltaTime;
+            //if the game has finished, we don't want to keep spawning prefabs in the background
+            if (subscriberState.IsGameOver())
+            {
+                return;
+            }
+
+			timer += Time.deltaTime;
 
             if (timer > spawnPeriod)
             {

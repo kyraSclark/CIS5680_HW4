@@ -7,7 +7,7 @@ namespace UnityEngine.XR.ARFoundation.Samples
     {
         [SerializeField]
         GameObject m_BackButton;
-        public GameObject backButton
+		public GameObject backButton
         {
             get => m_BackButton;
             set => m_BackButton = value;
@@ -26,8 +26,8 @@ namespace UnityEngine.XR.ARFoundation.Samples
         }
 
         public void BackButtonPressed()
-        {
-            if (Application.CanStreamedLevelBeLoaded("Menu"))
+        {			
+			if (Application.CanStreamedLevelBeLoaded("Menu"))
                 SceneManager.LoadScene("Menu", LoadSceneMode.Single);
         }
     }

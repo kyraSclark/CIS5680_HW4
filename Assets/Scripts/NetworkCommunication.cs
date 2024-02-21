@@ -3,9 +3,9 @@ namespace MyFirstARGame
 	using Photon.Pun;
 	using UnityEngine;
 
-	/// <summary>
-	/// You can use this class to make RPC calls between the clients. It is already spawned on each client with networking capabilities.
-	/// </summary>
+    /// <summary>
+    /// You can use this class to make RPC calls between the clients. It is already spawned on each client with networking capabilities.
+    /// </summary>
     public class NetworkCommunication : MonoBehaviourPun
     {
         [SerializeField]
@@ -15,9 +15,12 @@ namespace MyFirstARGame
         private BulletManager bulletManager;
 
 		public float timerMaxInSeconds;
-        public bool enableTimer = false;
+        public bool enableTimer;
 
         private float timeLeft;
+        private bool gameOver;
+        private int STARTING_SCORE = 0;
+        private int STARTING_BULLETS = 15;
 
         public void IncrementScore()
         {
@@ -39,7 +42,7 @@ namespace MyFirstARGame
             var currentBullets = this.bulletManager.GetBullets(playerName);
             this.photonView.RPC("Network_SetPlayerBullets", RpcTarget.All, playerName, currentBullets - 1);
         }
-        
+
         public void IncrementBullets(int b)
         {
             var playerName = $"Player {PhotonNetwork.LocalPlayer.ActorNumber}";
@@ -61,11 +64,35 @@ namespace MyFirstARGame
             return this.bulletManager.GetBullets(playerName);
         }
 
+        public void SetStatus(bool status)
+        {
+            var playerName = $"Player {PhotonNetwork.LocalPlayer.ActorNumber}";
+            this.photonView.RPC("Network_SetPlayerStatus", RpcTarget.All, playerName, status);
+        }
+
+        [PunRPC]
+        public void Network_ResetScoreBoard(int initScore)
+        {
+            this.scoreboard.ResetScoreBoard(initScore);
+        }
+
+        [PunRPC]
+        public void Network_ResetBullets(int initBulletCount)
+        {
+            this.bulletManager.ResetBulletManager(initBulletCount);
+        }
+
         [PunRPC]
         public void Network_SetPlayerScore(string playerName, int newScore)
         {
             Debug.Log($"Player {playerName} scored {newScore}!");
             this.scoreboard.SetScore(playerName, newScore);
+        }
+
+        [PunRPC]
+        public void Network_SetPlayerStatus(string playerName, bool status)
+        {
+            this.scoreboard.ClientSignalReady(playerName, status);
         }
 
         [PunRPC]
@@ -75,27 +102,35 @@ namespace MyFirstARGame
             this.bulletManager.SetBullets(playerName, newBullets);
         }
 
-		[PunRPC]
-		public void Network_SetTimerLeftText(string text)
-		{
+        [PunRPC]
+        public void Network_SetTimerLeftText(string text)
+        {
             this.scoreboard.SetTimerText(text);
-		}
+        }
 
-		[PunRPC]
-		public void Network_EndTimerOnAllClients(string text)
-		{
-			var globalState = GameObject.Find("GlobalState").GetComponent<GlobalClientState>();            
-			globalState.TimerEnded(text);
-		}
+        [PunRPC]
+        public void Network_ResetTimerOnAllClients(string text)
+        {
+            var globalState = GameObject.Find("GlobalState").GetComponent<GlobalClientState>();
+            globalState.ResetTimer(text);
+        }
 
-		public void UpdateForNewPlayer(Photon.Realtime.Player player)
+        [PunRPC]
+        public void Network_EndTimerOnAllClients(string text)
+        {
+            var globalState = GameObject.Find("GlobalState").GetComponent<GlobalClientState>();
+            globalState.TimerEnded(text);
+        }
+
+        public void UpdateForNewPlayer(Photon.Realtime.Player player)
         {
             var playerName = $"Player {player.ActorNumber}";
             Debug.Log("update for new player" + playerName);
             var currentScore = this.scoreboard.GetScore(playerName);
-            this.photonView.RPC("Network_SetPlayerScore", RpcTarget.All, playerName, 0);
-            this.photonView.RPC("Network_SetPlayerBullets", RpcTarget.All, playerName, 15);
-		}
+            this.photonView.RPC("Network_SetPlayerScore", RpcTarget.All, playerName, STARTING_SCORE);
+            this.photonView.RPC("Network_SetPlayerBullets", RpcTarget.All, playerName, STARTING_BULLETS);
+            this.photonView.RPC("Network_SetPlayerStatus", RpcTarget.All, playerName, false);
+        }
 
         public string GetTimeLeft()
         {
@@ -104,17 +139,35 @@ namespace MyFirstARGame
             return string.Format("{0:00} : {1:00}", minutes, seconds);
         }
 
+        public void ResetGameState()
+        {
+            timeLeft = timerMaxInSeconds;
+            gameOver = false;
+            this.photonView.RPC("Network_ResetScoreBoard", RpcTarget.All, STARTING_SCORE);
+            this.photonView.RPC("Network_ResetBullets", RpcTarget.All, STARTING_BULLETS); //resets both scores and client ready status
+            this.photonView.RPC("Network_ResetTimerOnAllClients", RpcTarget.All, "INVALID");
+			this.photonView.RPC("Network_SetTimerLeftText", RpcTarget.All, GetTimeLeft());
+		}
+
+        public bool areAllClientsReady()
+        {
+            return this.scoreboard.areAllClientsReady();
+		}
+
         void Start()
         {
             timeLeft = timerMaxInSeconds;
-            enableTimer = true;
+            gameOver = false;
         }
 
         void Update()
-        {
-            if (!PhotonNetwork.IsMasterClient)
+        {            
+			if (!PhotonNetwork.IsMasterClient)
                 return;
-            if (enableTimer)
+
+			enableTimer = this.scoreboard.areAllClientsReady() && !gameOver;
+
+			if (enableTimer)
             {
                 if (timeLeft > 0f)
                 {
@@ -123,7 +176,7 @@ namespace MyFirstARGame
 				}
                 else
                 {
-                    enableTimer = false;
+					gameOver = true;
                     int max;
                     string winner;
 					string gameOverText = this.scoreboard.GetWinnerText();

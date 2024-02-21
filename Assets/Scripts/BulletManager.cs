@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace MyFirstARGame
@@ -36,6 +37,11 @@ namespace MyFirstARGame
                 return 0;
             }
         }
+
+        public void ResetBulletManager(int initBulletCount)
+        {
+			bullets = bullets.ToDictionary(e => e.Key, e => initBulletCount);
+		}
 
         private void OnGUI()
         {
