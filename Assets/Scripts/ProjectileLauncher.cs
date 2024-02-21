@@ -22,9 +22,10 @@
         protected override void OnPressBegan(Vector3 position)
         {
             var networkCommunication = FindObjectOfType<NetworkCommunication>();
-            networkCommunication.DecrementBullets();
-
-            Debug.Log("on press");
+            if (networkCommunication.GetBullets() > 0)
+            {
+                networkCommunication.DecrementBullets(); // no negative bullet count 
+            }
 
             if (networkCommunication.GetBullets() > 0)
             {
