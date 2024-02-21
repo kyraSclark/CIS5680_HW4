@@ -45,7 +45,7 @@ namespace MyFirstARGame
 
             foreach (var num in this.bullets)
             {
-                if (bullets.Key != "Player 1")
+                if (num.Key != "Player 1")
                 {
                     GUILayout.Label($"{num.Key} Bullets: {num.Value}", new GUIStyle { normal = new GUIStyleState { textColor = Color.black }, fontSize = 22 });
                 }
