@@ -6,14 +6,14 @@ using UnityEngine;
 internal class Scoreboard : MonoBehaviour
 {
     private Dictionary<string, int> scores;
-    private bool isClientReady;
-    private string timerText;
+    private Dictionary<string, bool> readyStat;
+	private string timerText;
 
     private void Start()
     {
         this.scores = new Dictionary<string, int>();
-        isClientReady = false;
-    }
+		this.readyStat = new Dictionary<string, bool>();
+	}
 
     public void SetScore(string playerName, int score)
     {
@@ -39,15 +39,41 @@ internal class Scoreboard : MonoBehaviour
         }
     }
 
-    public void ClientSignalReady()
+    public void ClientSignalReady(string playerName, bool status)
     {
-        this.isClientReady = true; 
-    }
+		if (this.readyStat.ContainsKey(playerName))
+		{
+			this.readyStat[playerName] = status;
+		}
+		else
+		{
+			this.readyStat.Add(playerName, status);
+		}
+	}
 
     public void ResetScoreBoard(int initScore)
     {
         scores = scores.ToDictionary(e => e.Key, e => initScore);
-        isClientReady = false;
+		readyStat = readyStat.ToDictionary(e => e.Key, e => false);
+        if (readyStat.ContainsKey("Player 1"))
+        {
+            Debug.Log("defaulting server to true");
+            readyStat["Player 1"] = true;
+        }
+	}
+
+    public bool areAllClientsReady()
+    {
+		if(readyStat.Count == 0) return false;
+        if ( readyStat.ContainsKey("Player 1")) readyStat["Player 1"] = true;
+
+		bool allClientsReady = true;
+		foreach (var status in this.readyStat)
+		{
+            //Debug.Log($"refs {status.Key} -> {status.Value}");
+            allClientsReady &= status.Value;
+		}
+        return allClientsReady;
 	}
 
     public string GetWinnerText()
@@ -55,7 +81,6 @@ internal class Scoreboard : MonoBehaviour
             int max = -7;
             var winner = "";
 
-            Debug.Log("total scores: " + scores.Count);
             foreach (var score in this.scores)
             {
                 if (score.Value > max)
@@ -64,7 +89,6 @@ internal class Scoreboard : MonoBehaviour
                     winner = score.Key;
                 }
             }
-            Debug.Log($"{winner} wins with a score of {max}");
             return $"{winner} wins with a score of {max}";
         }
 
@@ -84,7 +108,7 @@ internal class Scoreboard : MonoBehaviour
             if (score.Key != "Player 1")
             {
                 GUILayout.Label($"{score.Key}: {score.Value}", new GUIStyle { normal = new GUIStyleState { textColor = Color.black }, fontSize = 22});
-            }
+			}
         }
 		GUILayout.Label(timerText, new GUIStyle { normal = new GUIStyleState { textColor = Color.red }, fontSize = 30 });
 

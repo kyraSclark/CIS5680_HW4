@@ -28,11 +28,18 @@ namespace MyFirstARGame
 		public void ToggleClientReady()
 		{
 			isClientReady = !isClientReady;
+			SetNetworkClientReadyStatus(isClientReady);
 		}
 
 		public bool IsClientReady()
 		{
 			return isClientReady;
+		}
+
+		private void SetNetworkClientReadyStatus(bool status)
+		{
+			var networkCommunication = FindObjectOfType<MyFirstARGame.NetworkCommunication>();
+			networkCommunication.SetStatus(status);
 		}
 
 		public void TimerEnded(string gameOverDueToTimerText)
@@ -45,6 +52,12 @@ namespace MyFirstARGame
 		public bool IsGameOver()
 		{
 			return gameOverTimer;
+		}
+
+		public bool AreaAllClientsReady()
+		{
+			var networkCommunication = FindObjectOfType<MyFirstARGame.NetworkCommunication>();
+			return networkCommunication.areAllClientsReady();
 		}
 	}
 }

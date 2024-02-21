@@ -49,6 +49,7 @@ MonoBehaviour:
   - Network_ResetBullets
   - Network_ResetScoreBoard
   - Network_ResetTimerOnAllClients
+  - Network_SetPlayerStatus
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

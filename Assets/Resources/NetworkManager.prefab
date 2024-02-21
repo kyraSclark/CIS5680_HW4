@@ -49,7 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreboard: {fileID: 7788529694523478808}
   bulletManager: {fileID: 4982848083970750894}
-  timerMaxInSeconds: 8
+  timerMaxInSeconds: 5
   enableTimer: 0
 --- !u!114 &4608888377164664123
 MonoBehaviour:

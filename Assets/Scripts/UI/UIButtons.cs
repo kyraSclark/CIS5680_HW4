@@ -109,9 +109,14 @@
         public void OnClientReady()
         {
             var globalClientState = globalState.GetComponent<MyFirstARGame.GlobalClientState>();
-            globalClientState.ToggleClientReady();
-            SetButtonState(toggleClientReadyButton, globalClientState.IsClientReady());
-            toggleClientReadyButton.GetComponent<Text>().text = globalClientState.IsClientReady() ? "Ready!" : "Ready?";
+            globalClientState.ToggleClientReady();            
+		}
+
+        void Update()
+        {
+			var globalClientState = globalState.GetComponent<MyFirstARGame.GlobalClientState>();
+			SetButtonState(toggleClientReadyButton, globalClientState.IsClientReady());
+            toggleClientReadyButton.SetActive(!globalClientState.AreaAllClientsReady() && !globalClientState.IsGameOver());
 		}
 	}
 }
